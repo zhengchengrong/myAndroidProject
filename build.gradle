@@ -1,0 +1,44 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+// In your app projects build.gradle file:
+
+
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral() // add repository
+
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.2'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
+        classpath 'com.jakewharton:butterknife-gradle-plugin:8.8.1'
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2' // add plugin
+
+
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    compileSdk = 26
+    minSdk = 15
+    targetSdk = 26
+    // 用了25.1.1发现专题界面的浮标按钮没有动画效果了。改回25.0.1
+    // support = "25.1.1"
+    support = "26.+"
+    buildTools = "26.0.1"
+    versionCode = 1
+    versionName = "1.0.0"
+}

@@ -1,0 +1,61 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdk
+    buildToolsVersion rootProject.ext.buildTools
+    defaultConfig {
+        applicationId "com.zcr.myproject"
+        minSdkVersion rootProject.ext.minSdk
+        targetSdkVersion rootProject.ext.targetSdk
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile "com.android.support:appcompat-v7:${rootProject.ext.support}"
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    compile project(':RxTools-library')
+
+    compile "io.reactivex.rxjava2:rxjava:2.1.1"
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    // 加HttpLoggingInterceptor进行调试
+    compile 'com.squareup.okhttp3:logging-interceptor:3.8.1'
+
+    // RxLifecycle
+    compile 'com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'
+
+
+    // dagger 达 葛
+    compile 'com.google.dagger:dagger:2.11'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.11'
+    //java注解
+    compile 'org.glassfish:javax.annotation:10.0-b28'
+
+
+    compile 'org.greenrobot:greendao:3.2.2' // add library
+
+    // 加载进度条框架
+    compile 'com.github.ybq:Android-SpinKit:1.1.0'
+
+     // 下拉刷新，上拉加载框架 https://github.com/scwang90/SmartRefreshLayout
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
+
+ // 因为Android M权限问题导致的"Permission Denial: reading com.android.providers.media.MediaProvider"解决办法
+//    compile "com.github.hotchemi:permissionsdispatcher:2.1.2"
+//    apt "com.github.hotchemi:permissionsdispatcher-processor:2.1.2"
+}
