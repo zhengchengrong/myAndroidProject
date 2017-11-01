@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'packer'
 android {
     compileSdkVersion rootProject.ext.compileSdk
     buildToolsVersion rootProject.ext.buildTools
@@ -11,14 +11,61 @@ android {
         versionName rootProject.ext.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs {
+        v2 {
+            storeFile file("../android.jks")
+            storePassword "123456"
+            keyAlias "android"
+            keyPassword "123456"
+            v2SigningEnabled true
+        }
+
+        v1 {
+            storeFile file("../android.jks")
+            storePassword "123456"
+            keyAlias "android"
+            keyPassword "123456"
+            v2SigningEnabled false
+        }
+
+    }
+
+    packer {
+        archiveNameFormat = '${buildType}-v${versionName}-${channel}'
+        archiveOutput = new File(project.rootProject.buildDir, "apks")
+//    channelList = ['*Douban*', 'Google/', '中文/@#市场', 'Hello@World',
+//                   'GradleTest', '20070601!@#$%^&*(){}:"<>?-=[];\',./']
+    channelFile = new File(project.rootDir, "markets.txt")
+//        channelMap = [
+//                "Cat" : project.rootProject.file("channels/cat.txt"),
+//                "Dog" : project.rootProject.file("channels/dog.txt"),
+//                "Fish": project.rootProject.file("channels/channels.txt")
+//        ]
+    }
+
     buildTypes {
+//        release {
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//        }
         release {
+            signingConfig signingConfigs.v2
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        beta {
+            signingConfig signingConfigs.v1
+            minifyEnabled false
+        }
+
+        alpha {
+            minifyEnabled false
         }
     }
 
 }
+
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
@@ -58,4 +105,12 @@ dependencies {
  // 因为Android M权限问题导致的"Permission Denial: reading com.android.providers.media.MediaProvider"解决办法
 //    compile "com.github.hotchemi:permissionsdispatcher:2.1.2"
 //    apt "com.github.hotchemi:permissionsdispatcher-processor:2.1.2"
+
+    // 集成腾讯热更新
+    // 若使用annotation需要单独引用,对于tinker的其他库都无需再引用
+    provided("com.tinkerpatch.tinker:tinker-android-anno:1.8.0")
+    compile("com.tinkerpatch.sdk:tinkerpatch-android-sdk:1.1.8")
+
+    // 多渠道打包
+    compile 'com.mcxiaoke.packer-ng:helper:2.0.0'
 }
