@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply from: 'tinkerpatch.gradle'
 
 android {
     compileSdkVersion rootProject.ext.compileSdk
@@ -11,6 +12,53 @@ android {
         versionName rootProject.ext.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    sourceSets {
+        main {
+            jniLibs.srcDir 'libs'
+            jni.srcDirs = [] // disable automatic ndk-build
+        }
+    }
+
+    signingConfigs {
+        v2 {
+            storeFile file("../android.jks")
+            storePassword "123456"
+            keyAlias "android"
+            keyPassword "123456"
+            v2SigningEnabled true
+        }
+
+        v1 {
+            storeFile file("../android.jks")
+            storePassword "123456"
+            keyAlias "android"
+            keyPassword "123456"
+            v2SigningEnabled false
+        }
+
+    }
+
+    buildTypes {
+//        release {
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//        }
+        release {
+            signingConfig signingConfigs.v2
+            minifyEnabled false
+        }
+
+        beta {
+            signingConfig signingConfigs.v1
+            minifyEnabled false
+        }
+
+        alpha {
+            minifyEnabled false
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -58,4 +106,9 @@ dependencies {
  // 因为Android M权限问题导致的"Permission Denial: reading com.android.providers.media.MediaProvider"解决办法
 //    compile "com.github.hotchemi:permissionsdispatcher:2.1.2"
 //    apt "com.github.hotchemi:permissionsdispatcher-processor:2.1.2"
+
+    // 集成腾讯热更新
+    // 若使用annotation需要单独引用,对于tinker的其他库都无需再引用
+    provided("com.tinkerpatch.tinker:tinker-android-anno:1.8.0")
+    compile("com.tinkerpatch.sdk:tinkerpatch-android-sdk:1.1.8")
 }
