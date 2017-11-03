@@ -1,7 +1,6 @@
 package test;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -12,18 +11,13 @@ import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.vondear.rxtools.RxCameraUtils;
+import com.eaphone.g08android.utils.PicUploadUtils;
 import com.vondear.rxtools.RxLogUtils;
-import com.zcr.myproject.R;
-import com.zcr.myproject.api.bean.PictureResult;
-import com.zcr.myproject.utils.PicUploadUtils;
-
-import java.io.IOException;
+import com.zcr.g08android.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,7 +29,7 @@ public class PicUploadAndDownloadActivity extends Activity implements View.OnCli
 
     private static final int REQUEST_CODE_PICK_IMAGE = 1;
     private static final int REQUEST_CODE_CAPTURE_CAMEIA = 2;
-    private static final String TAG = "zcr";
+    private static final String TAG = "eaphone";
     private static final int MY_PERMISSIONS_REQUEST_CALL_PHONE = 1;
     @BindView(R.id.btn_pic_upload)
     Button btnPicUpload;

@@ -4,9 +4,8 @@ apply plugin: 'tinkerpatch-support'
  * TODO: 请按自己的需求修改为适应自己工程的参数
  */
 def bakPath = file("${buildDir}/bakApk/")
-def baseInfo = "app-0115-23-11-20"
-def variantName = "debug"
-
+def baseInfo = "app-1.0.1-1103-10-17-41"
+def variantName = "release"
 /**
  * 对于插件各参数的详细解析请参考
  * http://tinkerpatch.com/Docs/SDK
@@ -23,10 +22,10 @@ tinkerpatchSupport {
 
     autoBackupApkPath = "${bakPath}"
 
-    appKey = "f08b71ad6eee1fde"
+    appKey = "01f39f5e81828cec"
 
     /** 注意: 若发布新的全量包, appVersion一定要更新 **/
-    appVersion = "1.0.0"
+    appVersion = "1.0.1"
 
     def pathPrefix = "${bakPath}/${baseInfo}/${variantName}/"
     def name = "${project.name}-${variantName}"

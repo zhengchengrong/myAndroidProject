@@ -1,10 +1,12 @@
 apply plugin: 'com.android.application'
 apply plugin: 'packer'
+apply from: 'tinkerpatch.gradle'
+
 android {
     compileSdkVersion rootProject.ext.compileSdk
     buildToolsVersion rootProject.ext.buildTools
     defaultConfig {
-        applicationId "com.zcr.myproject"
+        applicationId "com.eaphone.g08android"
         minSdkVersion rootProject.ext.minSdk
         targetSdkVersion rootProject.ext.targetSdk
         versionCode rootProject.ext.versionCode
@@ -63,6 +65,39 @@ android {
             minifyEnabled false
         }
     }
+
+    /** 若有编译多flavors需求,可在flavors中覆盖以下参数
+     *  你也可以直接通过tinkerPatchAllFlavorDebug/tinkerPatchAllFlavorRelease, 一次编译所有的flavor补丁包
+     *  注意的是:除非你不同的flavor代码是不一样的,不然建议采用zip comment或者文件方式生成渠道信息
+     **/
+//    productFlavors {
+//        flavor {
+//            flavorName = "flavor1"
+//            // 后台需要按照每个flavor的appVersion来建立独立的工程，并单独下发补丁
+//            appVersion = "${tinkerpatchSupport.appVersion}_${flavorName}"
+//
+//            pathPrefix = "${bakPath}/${baseInfo}/${flavorName}${buildType}/"
+//            name = "${project.name}-${flavorName}${buildType}"
+//
+//            baseApkFile = "${pathPrefix}/${name}.apk"
+//            baseProguardMappingFile = "${pathPrefix}/${name}-mapping.txt"
+//            baseResourceRFile = "${pathPrefix}/${name}-R.txt"
+//        }
+//
+//        flavor {
+//            flavorName = "flavor2"
+//            // 后台需要按照每个flavor的appVersion来建立独立的工程，并单独下发补丁
+//            appVersion = "${tinkerpatchSupport.appVersion}_${flavorName}"
+//
+//            pathPrefix = "${bakPath}/${baseInfo}/${flavorName}${buildType}/"
+//            name = "${project.name}-${flavorName}${buildType}"
+//
+//            baseApkFile = "${pathPrefix}/${name}.apk"
+//            baseProguardMappingFile = "${pathPrefix}/${name}-mapping.txt"
+//            baseResourceRFile = "${pathPrefix}/${name}-R.txt"
+//        }
+//    }
+
 
 }
 

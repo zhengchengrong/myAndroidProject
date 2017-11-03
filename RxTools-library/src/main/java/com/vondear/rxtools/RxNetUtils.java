@@ -35,7 +35,7 @@ public class RxNetUtils {
 
     /**
      * 需添加权限
-     *      @code <com.zcr.myproject.uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+     *      @code <com.eaphone.myproject.uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
      *
      * 它主要负责的是
      *  1 监视网络连接状态 包括（Wi-Fi, 2G, 3G, 4G）
@@ -182,7 +182,7 @@ public class RxNetUtils {
      * 判断网络是否可用
      * 需添加权限
      *
-     * @code <com.zcr.myproject.uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+     * @code <com.eaphone.myproject.uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
      */
     public static boolean isAvailable(Context context) {
         NetworkInfo info = getActiveNetworkInfo(context);
@@ -193,7 +193,7 @@ public class RxNetUtils {
      * 判断网络是否连接
      * 需添加权限
      *
-     * @code <com.zcr.myproject.uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+     * @code <com.eaphone.myproject.uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
      */
     public static boolean isConnected(Context context) {
         NetworkInfo info = getActiveNetworkInfo(context);
@@ -261,7 +261,7 @@ public class RxNetUtils {
 
     /**
      * 判断wifi是否连接状态
-     * <p>需添加权限 {@code <com.zcr.myproject.uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>}</p>
+     * <p>需添加权限 {@code <com.eaphone.myproject.uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>}</p>
      *
      * @param context 上下文
      * @return {@code true}: 连接<br>{@code false}: 未连接
@@ -289,7 +289,7 @@ public class RxNetUtils {
     /**
      * 判断网络是否是4G
      * 需添加权限
-     *      @code <com.zcr.myproject.uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+     *      @code <com.eaphone.myproject.uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
      */
     public static boolean is4G(Context context) {
         NetworkInfo info = getActiveNetworkInfo(context);

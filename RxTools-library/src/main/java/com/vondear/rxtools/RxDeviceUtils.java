@@ -115,7 +115,7 @@ public class RxDeviceUtils {
     /**
      * IMEI （唯一标识序列号）
      * <p>需与{@link #isPhone(Context)}一起使用</p>
-     * <p>需添加权限 {@code <com.zcr.myproject.uses-permission android:name="android.permission.READ_PHONE_STATE"/>}</p>
+     * <p>需添加权限 {@code <com.eaphone.myproject.uses-permission android:name="android.permission.READ_PHONE_STATE"/>}</p>
      *
      * @param context 上下文
      * @return IMEI
@@ -501,7 +501,7 @@ public class RxDeviceUtils {
 
     /**
      * 获取设备MAC地址
-     * <p>需添加权限 {@code <com.zcr.myproject.uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>}</p>
+     * <p>需添加权限 {@code <com.eaphone.myproject.uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>}</p>
      *
      * @param context 上下文
      * @return MAC地址
@@ -520,7 +520,7 @@ public class RxDeviceUtils {
 
     /**
      * 获取设备MAC地址
-     * <p>需添加权限 {@code <com.zcr.myproject.uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>}</p>
+     * <p>需添加权限 {@code <com.eaphone.myproject.uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>}</p>
      *
      * @return MAC地址
      */
@@ -557,7 +557,7 @@ public class RxDeviceUtils {
 
     /**
      * 获取手机状态信息
-     * <p>需添加权限 {@code <com.zcr.myproject.uses-permission android:name="android.permission.READ_PHONE_STATE"/>}</p>
+     * <p>需添加权限 {@code <com.eaphone.myproject.uses-permission android:name="android.permission.READ_PHONE_STATE"/>}</p>
      *
      * @param context 上下文
      * @return DeviceId(IMEI) = 99000311726612<br>
@@ -610,7 +610,7 @@ public class RxDeviceUtils {
 
     /**
      * 拨打电话
-     * 需添加权限 {@code <com.zcr.myproject.uses-permission android:name="android.permission.CALL_PHONE"/>}
+     * 需添加权限 {@code <com.eaphone.myproject.uses-permission android:name="android.permission.CALL_PHONE"/>}
      *
      * @param context     上下文
      * @param phoneNumber 电话号码
@@ -657,8 +657,8 @@ public class RxDeviceUtils {
 
     /**
      * 获取手机联系人
-     * <p>需添加权限 {@code <com.zcr.myproject.uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>}</p>
-     * <p>需添加权限 {@code <com.zcr.myproject.uses-permission android:name="android.permission.READ_CONTACTS"/>}</p>
+     * <p>需添加权限 {@code <com.eaphone.myproject.uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>}</p>
+     * <p>需添加权限 {@code <com.eaphone.myproject.uses-permission android:name="android.permission.READ_CONTACTS"/>}</p>
      *
      * @param context 上下文;
      * @return 联系人链表
@@ -754,8 +754,8 @@ public class RxDeviceUtils {
 
     /**
      * 获取手机短信并保存到xml中
-     * <p>需添加权限 {@code <com.zcr.myproject.uses-permission android:name="android.permission.READ_SMS"/>}</p>
-     * <p>需添加权限 {@code <com.zcr.myproject.uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>}</p>
+     * <p>需添加权限 {@code <com.eaphone.myproject.uses-permission android:name="android.permission.READ_SMS"/>}</p>
+     * <p>需添加权限 {@code <com.eaphone.myproject.uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>}</p>
      *
      * @param context 上下文
      */

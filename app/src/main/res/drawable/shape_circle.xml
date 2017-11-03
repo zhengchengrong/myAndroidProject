@@ -9,6 +9,6 @@
 
     <!-- 填充 -->
     <stroke
-        android:width="@dimen/space_3dp"
+        android:width="@dimen/dp_3"
         android:color="@color/white" />
 </shape>

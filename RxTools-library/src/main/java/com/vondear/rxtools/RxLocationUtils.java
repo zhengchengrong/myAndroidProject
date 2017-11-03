@@ -72,9 +72,9 @@ public class RxLocationUtils {
     /**
      * 注册
      * <p>使用完记得调用{@link #unregister()}</p>
-     * <p>需添加权限 {@code <com.zcr.myproject.uses-permission android:name="android.permission.INTERNET"/>}</p>
-     * <p>需添加权限 {@code <com.zcr.myproject.uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>}</p>
-     * <p>需添加权限 {@code <com.zcr.myproject.uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>}</p>
+     * <p>需添加权限 {@code <com.eaphone.myproject.uses-permission android:name="android.permission.INTERNET"/>}</p>
+     * <p>需添加权限 {@code <com.eaphone.myproject.uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>}</p>
+     * <p>需添加权限 {@code <com.eaphone.myproject.uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>}</p>
      * <p>如果{@code minDistance}为0，则通过{@code minTime}来定时更新；</p>
      * <p>{@code minDistance}不为0，则以{@code minDistance}为准；</p>
      * <p>两者都为0，则随时刷新。</p>

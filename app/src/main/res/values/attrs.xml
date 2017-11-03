@@ -4,4 +4,15 @@
     <declare-styleable name="EmptyLayout">
         <attr name="background_color" format="color"/>
     </declare-styleable>
+
+    <attr name="themeColor" format="color|reference" />
+    <attr name="widgetBackground" format="color|reference" />
+    <attr name="widgetBackgroundDark" format="color|reference" />
+    <attr name="widgetBackgroundTitle" format="color|reference" />
+
+    <declare-styleable name="RecyclerViewPager">
+        <attr name="rvp_triggerOffset" format="float" />
+        <attr name="rvp_flingFactor" format="float" />
+        <attr name="rvp_singlePageFling" format="boolean" />
+    </declare-styleable>
 </resources>
