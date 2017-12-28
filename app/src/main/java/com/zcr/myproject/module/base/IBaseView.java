@@ -26,6 +26,10 @@ public interface IBaseView {
      * @return
      */
     <T> LifecycleTransformer<T> bindToLife();
+    /**
+     * 显示非正常返回服务器提示的信息，比如token过期、访问失败等信息
+     */
+    void showToast(String msg);
 
     void toLoginActivity();
 }

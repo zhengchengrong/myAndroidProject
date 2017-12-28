@@ -7,15 +7,15 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
-import com.vondear.rxtools.RxIntentUtils;
+import com.vondear.rxtools.RxLogUtils;
+import com.vondear.rxtools.view.RxToast;
 import com.zcr.myproject.R;
-import com.zcr.myproject.api.NetUtils;
 import com.zcr.myproject.module.logins.LoginActivity;
 import com.zcr.myproject.widget.EmptyLayout;
 
@@ -23,14 +23,6 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.internal.Utils;
-import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
-import io.reactivex.ObservableTransformer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by long on 2016/8/19.
@@ -189,6 +181,18 @@ public abstract class BaseActivity<T extends IBasePresenter> extends RxAppCompat
         fragmentTransaction.commit();
     }
 
+    public void showToast(String msg) {
+        RxLogUtils.d("showToast  " + msg);
+        if (!TextUtils.isEmpty(msg)) {
+            if (msg.equals("invalid token")) { // 处理token过期
+                RxToast.showToast(this, "检测到您的登录已过期，请重新登录", Toast.LENGTH_SHORT);
+                sendBroadcast(new Intent("RELOAD_LOGIN")); //发送广播，跳转到登录页面。
+            } else
+                RxToast.showToast(this, msg, Toast.LENGTH_SHORT);
+        } else {
+
+        }
+    }
     /**
      * 替换 Fragment
      *
